@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Professional Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: row;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .left-section {
+            width: 35%;
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 25px;
+            position: relative;
+        }
+        
+        .right-section {
+            width: 65%;
+            padding: 40px 30px;
+            background-color: #fff;
+        }
+        
+        .profile-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 5px solid rgba(255,255,255,0.2);
+            overflow: hidden;
+            background-color: #486b9e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profile-img i {
+            font-size: 80px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-size: 22px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .left-section .section-title {
+            color: #fff;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .right-section .section-title {
+            color: #2c3e50;
+            border-bottom: 2px solid rgba(44,62,80,0.2);
+        }
+        
+        .section-title i {
+            margin-right: 15px;
+            font-size: 24px;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .contact-info {
+            margin-bottom: 35px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+        
+        .contact-info p i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .about-me {
+            margin-bottom: 35px;
+            line-height: 1.7;
+            text-align: justify;
+            font-size: 15px;
+        }
+        
+        .skills-section {
+            margin-bottom: 35px;
+        }
+        
+        .skill {
+            margin-bottom: 20px;
+        }
+        
+        .skill-name {
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .skill-level::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .software-skills {
+            margin-bottom: 35px;
+        }
+        
+        .software-skills p {
+            margin-bottom: 10px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .software-skills p i {
+            margin-right: 15px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .languages {
+            margin-bottom: 35px;
+        }
+        
+        .languages p {
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .hobby {
+            text-align: center;
+            width: calc(33.33% - 10px);
+            margin-bottom: 20px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .hobby:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .hobby i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .hobby p {
+            font-size: 14px;
+        }
+        
+        .education-item, .experience-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .education-item::before, .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: rgba(44,62,80,0.2);
+        }
+        
+        .education-item::after, .experience-item::after {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #2c3e50;
+        }
+        
+        .education-item h3, .experience-item h3 {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        
+        .education-item h4, .experience-item h4 {
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 16px;
+        }
+        
+        .time-period {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .time-period i {
+            margin-right: 8px;
+            color: #3498db;
+        }
+        
+        .description {
+            line-height: 1.6;
+            text-align: justify;
+            font-size: 15px;
+            color: #555;
+        }
+        
+        .reference-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .reference-item {
+            width: 48%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .reference-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .reference-item p {
+            margin-bottom: 5px;
+            line-height: 1.5;
+            font-size: 15px;
+        }
+        
+        .reference-item strong {
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        
+        .note {
+            font-style: italic;
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .left-section, .right-section {
+                width: 100%;
+            }
+            
+            .reference-item {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .left-section, .right-section {
+                padding: 30px 20px;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .hobby {
+                width: calc(50% - 10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="profile-container">
+                <div class="profile-img">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h2 class="section-title"><i class="fas fa-address-card"></i>CONTACT</h2>
+                <p><i class="fas fa-envelope"></i>Email: gosaad@outlook.com</p>
+                <p><i class="fas fa-phone"></i>Phone: +923370333221</p>
+                <p><i class="fas fa-map-marker-alt"></i>Address: BL-6, Gulshan-e-Iqbal, Khi</p>
+            </div>
+            
+            <div class="about-me">
+                <h2 class="section-title"><i class="fas fa-user-circle"></i>ABOUT ME</h2>
+                <p>I am a dedicated, organized and methodical individual. I have good interpersonal skills, am an excellent team worker and am keen and very willing to learn and develop new skills. I am reliable and dependable and often seek new responsibilities within a wide range of employment areas. I have an active and dynamic approach to work and getting things done. I am determined and decisive. I identify and develop opportunities.</p>
+            </div>
+            
+            <div class="skills-section">
+                <h2 class="section-title"><i class="fas fa-chart-bar"></i>SKILLS</h2>
+                <div class="skill">
+                    <div class="skill-name">COMMUNICATION</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">PROGRAMMING</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">DESIGNING</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">ORGANIZATION</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">LEADERSHIP</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">TEAMPLAYER</div>
+                    <div class="skill-bar">
+                        <div class="skill-level" style="width: 90%;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="software-skills">
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i>SOFTWARES</h2>
+                <p><i class="fas fa-check-circle"></i>MS OFFICE</p>
+                <p><i class="fas fa-check-circle"></i>PHOTOSHOP</p>
+                <p><i class="fas fa-check-circle"></i>AFTEREFFECTS</p>
+                <p><i class="fas fa-check-circle"></i>ILLUSTATOR</p>
+            </div>
+            
+            <div class="languages">
+                <h2 class="section-title"><i class="fas fa-code"></i>LANGUAGES/FW</h2>
+                <p>JS, NodeJS, Flask, Odoo<br>
+                Bootstrap, JAVA, C++,<br>
+                C#, PHP, LARAVEL, Python<br>
+                MVC, Wordpress, SQL</p>
+            </div>
+            
+            <h2 class="section-title"><i class="fas fa-heart"></i>HOBBIES</h2>
+            <div class="hobbies">
+                <div class="hobby">
+                    <i class="fas fa-bowling-ball"></i>
+                    <p>Snooker</p>
+                </div>
+                <div class="hobby">
+                    <i class="fas fa-baseball-ball"></i>
+                    <p>Cricket</p>
+                </div>
+                <div class="hobby">
+                    <i class="fas fa-gamepad"></i>
+                    <p>Gaming</p>
+                </div>
+                <div class="hobby">
+                    <i class="fas fa-plane"></i>
+                    <p>Traveling</p>
+                </div>
+                <div class="hobby">
+                    <i class="fas fa-camera"></i>
+                    <p>Photography</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-section">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i>EDUCATION</h2>
+            
+            <div class="education-item">
+                <h3>Govt. National College</h3>
+                <h4>HIGHER SECONDARY EDUCATION</h4>
+                <div class="time-period"><i class="far fa-calendar-alt"></i>2009-2011</div>
+                <div class="description">Cleared pre-engineering through intermediate board with 2nd division.</div>
+            </div>
+            
+            <div class="education-item">
+                <h3>Hamdard University</h3>
+                <h4>BECHELOR OF COMPUTER SCIENCE</h4>
+                <div class="time-period"><i class="far fa-calendar-alt"></i>2011-2016</div>
+                <div class="description">Achieved Gold Medal in BS for outstanding GPA and built a web based Alumni Management System for Hamdard University in FYP.</div>
+            </div>
+            
+            <div class="education-item">
+                <h3>Hamdard University</h3>
+                <h4>MASTER OF COMPUTER SCIENCE SW ENGG</h4>
+                <div class="time-period"><i class="far fa-calendar-alt"></i>2017-2018</div>
+                <div class="description">Cleared with 3.7 GPA and Practiced data anaylisis, data mining and optimation techniques in the light of software engineering.</div>
+            </div>
+            
+            <div class="education-item">
+                <h3>Hamdard University</h3>
+                <h4>PhD IN COMPUTER SCIENCE</h4>
+                <div class="time-period"><i class="far fa-calendar-alt"></i>2024-Present</div>
+                <div class="description">In Progress</div>
+            </div>
+            
+            <h2 class="section-title"><i class="fas fa-briefcase"></i>WORK EXPERIENCE</h2>
+            
+            <div class="experience-item">
+                <h3>Freelancing</h3>
+                <h4>SELF EMPLOYED WEBIZT</h4>
+                <div class="time-period"><i class="far fa-calendar-alt"></i>early 2018 - mid 2020</div>
+                <div class="description">Provide web based and IT solution's to companies in-order to meet up with their requirement. So long been able to deliver 30+ successful projects including ERP, CMS, Reporting Solutions and websites for numerous firms such as education, advertising, banking, textile and others.</div>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Sr. Lecturer</h3>
+                <h4>DHA SUFFA UNIVERSITY</h4>
+                <div class="time-period"><i class="far fa-calendar-alt"></i>mid 2020 - early 2025</div>
+                <div class="description">Teaching courses related to SW design and development, and serving as SE program in-charge, FYP coordinator, SE batch advisor; along with other administrative roles.</div>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Project Coordinator</h3>
+                <h4>SELGEIBA</h4>
+                <div class="time-period"><i class="far fa-calendar-alt"></i>late 2017 - early 2018</div>
+                <div class="description">Database architect, backend process flow, ERP design, distribution of work along with its tracking and reporting to PM were the key duties.</div>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Front End Developer</h3>
+                <h4>AJ INTERNATIONAL</h4>
+                <div class="time-period"><i class="far fa-calendar-alt"></i>early 2017 - mid 2017</div>
+                <div class="description">Desiging frontend for websites using html, css, js, jquery and other helpfull plugins, along with animations, popups and subtle effects.</div>
+            </div>
+            
+            <div class="experience-item">
+                <h3>Graphics Designer</h3>
+                <h4>UNIQUE ADVERTISING</h4>
+                <div class="time-period"><i class="far fa-calendar-alt"></i>mid 2016 - early 2017</div>
+                <div class="description">Responsible for desiging logos, banners, standees and other arts to build brand identity. UI UX design for web applications. Visual Arts and Motion Graphics according to specification.</div>
+            </div>
+            
+            <h2 class="section-title"><i class="fas fa-user-tie"></i>REFERENCE</h2>
+            
+            <div class="reference-section">
+                <div class="reference-item">
+                    <p><strong>Syed Ghazenfer Habib</strong></p>
+                    <p>Director Allied Engineering Services</p>
+                </div>
+                
+                <div class="reference-item">
+                    <p><strong>Prof. Dr. Syed Karamatullah Hussainy</strong></p>
+                    <p>Shaheed Zulfiqar Ali Bhutto University</p>
+                </div>
+                
+                <p class="note">Other References Available on request</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
